@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>&#128375;Spidy-AI</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+
+    background:url("WhatsApp Image 2026-07-16 at 20.52.58.jpeg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    color:purple;
+}
+
+.overlay{
+    min-height:100vh;
+    background:rgba(0,0,0,0.7);
+    text-align:center;
+    padding-top:60px;
+}
+
+h1{
+    font-size:65px;
+    color:red;
+
+    text-shadow:
+        0 0 15px blue,
+        0 0 25px red;
+}
+
+p{
+    font-size:22px;
+}
+
+input{
+    width:60%;
+    padding:15px;
+    border:none;
+    border-radius:30px;
+    font-size:20px;
+    outline:none;
+}
+
+button{
+    padding:15px 30px;
+    margin:15px;
+    border:none;
+    border-radius:30px;
+    background:red;
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#c00000;
+}
+
+#results{
+    width:80%;
+    margin:auto;
+    margin-top:40px;
+}
+
+.card{
+    background:rgba(255,255,255,0.12);
+
+    backdrop-filter:blur(8px);
+
+    margin:12px;
+    padding:18px;
+    border-radius:15px;
+}
+
+a{
+    color:#7ec8ff;
+    text-decoration:none;
+    font-size:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<h1>&#128375;Spidy-AI</h1>
+
+<p>
+Your Friendly Neighborhood Search Engine
+</p>
+
+<input
+id="search"
+placeholder="Ask Spidy-AI anything..."
+onkeypress="
+if(event.key==='Enter')
+searchAll()
+">
+
+<br>
+
+<button onclick="searchAll()">
+Search
+</button>
+
+<button onclick="openAll()">
+Open All
+</button>
+
+<div class="card">
+
+<h2>Visitor Details</h2>
+
+<div id="visitor"></div>
+
+<div id="location"></div>
+
+</div>
+
+<div id="results"></div>
+
+</div>
+
+<script>
+
+let links=[];
+
+function searchAll(){
+
+let q=
+document.getElementById(
+"search"
+).value;
+
+if(q==="") return;
+
+links=[];
+
+const sites=[
+
+["Wikipedia",
+"https://en.wikipedia.org/wiki/"],
+
+["Google",
+"https://www.google.com/search?q="],
+
+["DuckDuckGo",
+"https://duckduckgo.com/?q="],
+
+["Bing",
+"https://www.bing.com/search?q="],
+
+["YouTube",
+"https://www.youtube.com/results?search_query="],
+
+["Reddit",
+"https://www.reddit.com/search/?q="],
+
+["GitHub",
+"https://github.com/search?q="],
+
+["Stack Overflow",
+"https://stackoverflow.com/search?q="],
+
+["Play Store",
+"https://play.google.com/store/search?q="]
+
+];
+
+let html=
+`<h2>Results for "${q}"</h2>`;
+
+sites.forEach(site=>{
+
+let link=
+site[1]+
+encodeURIComponent(q);
+
+links.push(link);
+
+html+=`
+
+<div class="card">
+
+<a
+href="${link}"
+target="_blank">
+
+?? Search on
+${site[0]}
+
+</a>
+
+</div>
+
+`;
+
+});
+
+document.getElementById(
+"results"
+).innerHTML=html;
+
+}
+
+function openAll(){
+
+links.forEach(link=>{
+
+window.open(
+link,
+"_blank"
+);
+
+});
+
+}
+
+/* Visitor Details */
+
+document.getElementById(
+"visitor"
+).innerHTML=
+
+`
+Browser :
+${navigator.userAgent}
+
+<br><br>
+
+Platform :
+${navigator.platform}
+
+<br><br>
+
+Language :
+${navigator.language}
+
+<br><br>
+
+Screen :
+${screen.width}
+x
+${screen.height}
+
+<br><br>
+
+Visited :
+${new Date()}
+`;
+
+if(navigator.geolocation){
+
+navigator.geolocation.getCurrentPosition(
+
+function(pos){
+
+document.getElementById(
+"location"
+).innerHTML=
+
+`
+<br>
+
+Latitude :
+${pos.coords.latitude}
+
+<br><br>
+
+Longitude :
+${pos.coords.longitude}
+`;
+
+},
+
+function(){
+
+document.getElementById(
+"location"
+).innerHTML=
+
+"<br>Location permission denied.";
+
+}
+
+);
+
+}
+
+</script>
+
+</body>
+</html>
