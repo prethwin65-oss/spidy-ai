@@ -1,116 +1,127 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>&#128375;Spidy-AI</title>
-<meta name="google-site-verification" content="WbCTniNf5SPY2P7xA5pGqqsPVZ3UmIgAc9gjQO0H76I" />
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>&#12875;Spidy-AI</title>
+
+<meta name="google-site-verification" content="Drr3v6ei4V9E0jlH-MrQA74X3OPp2McG3nv4uhtqVT8" />
+
+<meta name="description" content="Spidy-AI - Your Friendly Neighborhood Search Engine">
+<meta name="keywords" content="Spidy AI, AI Search Engine, Google, Wikipedia, YouTube, Search">
+<meta name="author" content="PR Gamer">
+<meta name="robots" content="index, follow">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-
-    background:url("WhatsApp Image 2026-07-16 at 20.52.58.jpeg");
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-
-    color:white;
+font-family:Arial,sans-serif;
+background:url("WhatsApp Image 2026-07-16 at 20.52.58.jpeg");
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+color:white;
 }
 
 .overlay{
-    min-height:100vh;
-    background:rgba(0,0,0,0.7);
-    text-align:center;
-    padding-top:60px;
+min-height:100vh;
+background:rgba(0,0,0,.75);
+padding:40px;
+text-align:center;
 }
 
 h1{
-    font-size:65px;
-    color:red;
-
-    text-shadow:
-        0 0 15px blue,
-        0 0 25px red;
+font-size:60px;
+color:red;
+text-shadow:0 0 20px blue,0 0 35px red;
+margin-bottom:10px;
 }
 
 p{
-    font-size:22px;
+font-size:22px;
+margin-bottom:20px;
 }
 
 input{
-    width:60%;
-    padding:15px;
-    border:none;
-    border-radius:30px;
-    font-size:20px;
-    outline:none;
+width:65%;
+padding:15px;
+font-size:20px;
+border:none;
+border-radius:30px;
+outline:none;
 }
 
 button{
-    padding:15px 30px;
-    margin:15px;
-    border:none;
-    border-radius:30px;
-    background:red;
-    color:white;
-    font-size:18px;
-    cursor:pointer;
+padding:15px 30px;
+margin:10px;
+border:none;
+border-radius:30px;
+background:red;
+color:white;
+font-size:18px;
+cursor:pointer;
+transition:.3s;
 }
 
 button:hover{
-    background:#c00000;
-}
-
-#results{
-    width:80%;
-    margin:auto;
-    margin-top:40px;
+background:#b00000;
+transform:scale(1.05);
 }
 
 .card{
-    background:rgba(255,255,255,0.12);
-
-    backdrop-filter:blur(8px);
-
-    margin:12px;
-    padding:18px;
-    border-radius:15px;
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(8px);
+border-radius:15px;
+padding:18px;
+margin:15px auto;
+width:85%;
 }
 
 a{
-    color:#7ec8ff;
-    text-decoration:none;
-    font-size:20px;
+color:#7ec8ff;
+font-size:20px;
+text-decoration:none;
+}
+
+#results{
+margin-top:30px;
+}
+
+#visitor,#location{
+margin-top:10px;
+line-height:1.8;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="overlay">
 
-<h1>&#128375;Spidy-AI</h1>
+<h1>&#12875;Spidy-AI</h1>
 
-<p>
-Your Friendly Neighborhood Search Engine
-</p>
+<p>Your Friendly Neighborhood Search Engine</p>
 
 <input
 id="search"
 placeholder="Ask Spidy-AI anything..."
-onkeypress="
-if(event.key==='Enter')
-searchAll()
-">
+onkeypress="if(event.key==='Enter')searchAll()">
 
 <br>
 
-<button onclick="searchAll()">
-Search
-</button>
+<button onclick="searchAll()">Search</button>
 
-<button onclick="openAll()">
-Open All
-</button>
+<button onclick="openAll()">Open All</button>
 
 <div class="card">
 
@@ -132,54 +143,52 @@ let links=[];
 
 function searchAll(){
 
-let q=
-document.getElementById(
-"search"
-).value;
+let q=document.getElementById("search").value;
 
 if(q==="") return;
 
 links=[];
 
 const sites=[
-
-["Wikipedia",
-"https://en.wikipedia.org/wiki/"],
-
-["Google",
-"https://www.google.com/search?q="],
-
-["DuckDuckGo",
-"https://duckduckgo.com/?q="],
-
-["Bing",
-"https://www.bing.com/search?q="],
-
-["YouTube",
-"https://www.youtube.com/results?search_query="],
-
-["Reddit",
-"https://www.reddit.com/search/?q="],
-
-["GitHub",
-"https://github.com/search?q="],
-
-["Stack Overflow",
-"https://stackoverflow.com/search?q="],
-
-["Play Store",
-"https://play.google.com/store/search?q="]
-
+["Wikipedia","https://en.wikipedia.org/wiki/"],
+["Google","https://www.google.com/search?q="],
+["DuckDuckGo","https://duckduckgo.com/?q="],
+["Bing","https://www.bing.com/search?q="],
+["YouTube","https://www.youtube.com/results?search_query="],
+["Reddit","https://www.reddit.com/search/?q="],
+["GitHub","https://github.com/search?q="],
+["Stack Overflow","https://stackoverflow.com/search?q="],
+["Quora","https://www.quora.com/search?q="],
+["Instagram","https://www.instagram.com/explore/tags/"],
+["X","https://x.com/search?q="],
+["Facebook","https://www.facebook.com/search/top?q="],
+["LinkedIn","https://www.linkedin.com/search/results/all/?keywords="],
+["Medium","https://medium.com/search?q="],
+["Google Maps","https://www.google.com/maps/search/"],
+["Play Store","https://play.google.com/store/search?q="],
+["Amazon","https://www.amazon.com/s?k="],
+["Flipkart","https://www.flipkart.com/search?q="],["eBay","https://www.ebay.com/sch/i.html?_nkw="],
+["Spotify","https://open.spotify.com/search/"],
+["Steam","https://store.steampowered.com/search/?term="],
+["IMDb","https://www.imdb.com/find?q="],
+["BBC","https://www.bbc.co.uk/search?q="],
+["CNN","https://edition.cnn.com/search?q="],
+["Reuters","https://www.reuters.com/site-search/?query="],
+["W3Schools","https://www.w3schools.com/search/search.asp?input="],
+["GeeksforGeeks","https://www.geeksforgeeks.org/?s="],
+["MDN Docs","https://developer.mozilla.org/en-US/search?q="],
+["PyPI","https://pypi.org/search/?q="],
+["NPM","https://www.npmjs.com/search?q="],
+["Coursera","https://www.coursera.org/search?query="],
+["Udemy","https://www.udemy.com/courses/search/?q="],
+["Archive.org","https://archive.org/search?query="]
 ];
 
-let html=
-`<h2>Results for "${q}"</h2>`;
+let html=`<h2>Results for "${q}"</h2>`;
 
 sites.forEach(site=>{
 
-let link=
-site[1]+
-encodeURIComponent(q);
+let link=site[1]+encodeURIComponent(q);
 
 links.push(link);
 
@@ -187,12 +196,9 @@ html+=`
 
 <div class="card">
 
-<a
-href="${link}"
-target="_blank">
+<a href="${link}" target="_blank">
 
-?? Search on
-${site[0]}
+🔍 Search on ${site[0]}
 
 </a>
 
@@ -202,9 +208,7 @@ ${site[0]}
 
 });
 
-document.getElementById(
-"results"
-).innerHTML=html;
+document.getElementById("results").innerHTML=html;
 
 }
 
@@ -212,10 +216,7 @@ function openAll(){
 
 links.forEach(link=>{
 
-window.open(
-link,
-"_blank"
-);
+window.open(link,"_blank");
 
 });
 
@@ -223,76 +224,92 @@ link,
 
 /* Visitor Details */
 
-document.getElementById(
-"visitor"
-).innerHTML=
+document.getElementById("visitor").innerHTML=`
 
-`
-Browser :
-${navigator.userAgent}
+<b>Browser:</b><br>${navigator.userAgent}
 
 <br><br>
 
-Platform :
-${navigator.platform}
+<b>Platform:</b><br>${navigator.platform}
 
 <br><br>
 
-Language :
-${navigator.language}
+<b>Language:</b><br>${navigator.language}
 
 <br><br>
 
-Screen :
-${screen.width}
-x
-${screen.height}
+<b>Screen:</b><br>
+
+${screen.width} × ${screen.height}
 
 <br><br>
 
-Visited :
-${new Date()}
-`;
+<b>Visited:</b><br>
 
-if(navigator.geolocation){
+${new Date().toLocaleString()}
+
+`;if(navigator.geolocation){
 
 navigator.geolocation.getCurrentPosition(
 
-function(pos){
+function(position){
 
-document.getElementById(
-"location"
-).innerHTML=
+document.getElementById("location").innerHTML=`
 
-`
-<br>
+<hr>
 
-Latitude :
-${pos.coords.latitude}
+<h3>📍 Location</h3>
+
+<b>Latitude:</b><br>
+
+${position.coords.latitude}
 
 <br><br>
 
-Longitude :
-${pos.coords.longitude}
+<b>Longitude:</b><br>
+
+${position.coords.longitude}
+
+<br><br>
+
+<b>Accuracy:</b><br>
+
+${position.coords.accuracy} meters
+
 `;
 
 },
 
-function(){
+function(error){
 
-document.getElementById(
-"location"
-).innerHTML=
+document.getElementById("location").innerHTML=`
 
-"<br>Location permission denied.";
+<hr>
+
+<b>Location Status:</b>
+
+Permission denied or unavailable.
+
+`;
 
 }
 
 );
+
+}else{
+
+document.getElementById("location").innerHTML=`
+
+<hr>
+
+Geolocation is not supported by this browser.
+
+`;
 
 }
 
 </script>
 
 </body>
+
 </html>
